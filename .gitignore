@@ -57,3 +57,6 @@ __pycache__/
 # msp
 out*/
 3rdparty
+
+.xmake/
+build/

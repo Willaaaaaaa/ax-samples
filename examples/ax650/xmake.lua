@@ -2,11 +2,10 @@ local function axera_example(example_name, ...)
     target(example_name)
         set_kind("binary")
         add_files(...)
-        set_targetdir("ax650")
-        add_cxflags("fastest")  -- use -O3
+        set_targetdir("$(builddir)/bin/ax650")
+        set_installdir("$(builddir)/install")
+        set_optimize("fastest")  -- use -O3
         add_packages("opencv-aarch64", "ax650n_bsp_sdk")
-        set_toolchains("gcc-arm@gcc-arm-9.2")
-        add_links("ax_engine", "ax_interpreter", "ax_sys", "ax_ivps")
     target_end()
 end
 

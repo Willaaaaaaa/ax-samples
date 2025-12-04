@@ -7,8 +7,12 @@ package("ax650n_bsp_sdk")
 
     add_versions("v1.45.0_p39", "7f2ece72a881dcff0d11171f72c43086ded5ab64af1a970d3507fb6414b57390")
 
-    -- set_policy("package.install_always", true)
     on_install(function (package)
         os.cp("msp/out/*", package:installdir())
-        print(os.curdir())
+        package:add("ldflags", "-Wl,--allow-shlib-undefined")
+        package:add("ldflags", "-Wl,-rpath," .. package:installdir("lib"))
+    end)
+
+    on_test(function (package)
+        assert(package:has_cfuncs("AX_ENGINE_Init", {includes = "ax_engine_api.h"}))
     end)
