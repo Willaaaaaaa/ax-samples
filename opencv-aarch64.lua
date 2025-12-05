@@ -5,22 +5,18 @@ package("opencv-aarch64")
 
     add_syslinks("pthread", "dl")
 
-    on_install("linux", function (package)
+    on_install("@linux|x86_64", function (package)
         os.cp("*|share|build_opencv_aarch64.sh", package:installdir())
         package:add("includedirs", "include/opencv4")
 
         package:add("linkdirs", "lib")
-        print(package:installdir("lib"))
         package:add("linkdirs", "lib/opencv4/3rdparty")
-        print(package:installdir("lib/opencv4/3rdparty"))
         for _, lib_file in ipairs(os.files(package:installdir("lib/*.a"))) do
             local lib_name = path.basename(lib_file):match("lib(.+)")
-            print(lib_name)
             package:add("links", lib_name)
         end
         for _, lib_file in ipairs(os.files(package:installdir("lib/opencv4/3rdparty/*.a"))) do
             local lib_name = path.basename(lib_file):match("lib(.+)")
-            print(lib_name)
             package:add("links", lib_name)
         end
     end)

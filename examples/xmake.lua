@@ -8,13 +8,13 @@ if target_chip == "ax650" then
     add_requires("ax650n_bsp_sdk")
     includes("ax650")
 elseif target_chip == "ax630c" then
-    includes("$(scriptdir)/ax620e")
+    includes("ax620e")
 elseif target_chip == "ax620q" then
-    includes("$(scriptdir)/ax620e")
+    includes("ax620e")
 elseif target_chip == "ax620a" then
-    includes("$(scriptdir)/ax620")
+    includes("ax620")
 elseif target_chip == "ax630a" then
-    includes("$(scriptdir)/ax620")
+    includes("ax620")
 elseif target_chip == "ax637" then
-    includes("$(scriptdir)/ax637")
+    includes("ax637")
 end
