@@ -1,4 +1,5 @@
-package("gcc-arm-9.2")
+package("aarch64-gnu")
+    -- AX650A, AX650N, AX630C, AX637
     set_kind("toolchain")
     set_homepage("https://developer.arm.com/documentation/109388/9-2-2019-12/")
     set_description("GNU Toolchain for the AArch64 Architecture (9.2-2019.12)")
@@ -8,7 +9,7 @@ package("gcc-arm-9.2")
 
     add_versions("9.2", "8dfe681531f0bd04fb9c53cf3c0a3368c616aa85d48938eebe2b516376e06a66")
 
-    -- set_policy("package.install_always", true)
+    set_policy("package.install_always", true)
     on_install("@linux|x86_64", function (package)
         os.cp("*", package:installdir())
     end)

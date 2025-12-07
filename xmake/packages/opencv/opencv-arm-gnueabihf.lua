@@ -1,12 +1,14 @@
-package("opencv-aarch64")
-    add_urls("https://github.com/AXERA-TECH/ax-samples/releases/download/v0.1/opencv-aarch64-linux-gnu-gcc-7.5.0.zip")
+package("opencv-arm-gnueabihf")
+    -- AX620A, AX620U
+    add_urls("https://github.com/AXERA-TECH/ax-samples/releases/download/v0.1/opencv-arm-linux-gnueabihf-gcc-7.5.0.zip")
 
-    add_versions("4.5.5", "6f9bc791d4501ebdd698b7bcbf4dbab58d98a6a030bf2cfdf5866064cd9a0b2f")
+    add_versions("4.5.5", "465cd81e7109143357365306206af5128e5a17a8141eb606c3c1d5ef222a8dbb")
 
     add_syslinks("pthread", "dl")
 
-    on_install("@linux|x86_64", function (package)
-        os.cp("*|share|build_opencv_aarch64.sh", package:installdir())
+    on_install("@linux", function (package)
+        os.cp("include/**", package:installdir("include"))
+        os.cp("lib/**", package:installdir("lib"))
         package:add("includedirs", "include/opencv4")
 
         package:add("linkdirs", "lib")

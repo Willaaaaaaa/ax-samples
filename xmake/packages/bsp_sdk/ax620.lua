@@ -1,11 +1,11 @@
-package("ax650n_bsp_sdk")
+package("ax620")
+    -- AX620A, AX620U
     set_homepage("https://github.com/AXERA-TECH/ax650n_bsp_sdk")
     set_description("linux bsp app & sample for axpi pro (ax650n)")
 
-    add_urls("https://github.com/AXERA-TECH/ax650n_bsp_sdk/archive/refs/tags/$(version).tar.gz",
-             "https://github.com/AXERA-TECH/ax650n_bsp_sdk.git")
+    add_urls("https://github.com/AXERA-TECH/ax-samples/releases/download/v0.3/arm_axpi_r1.22.2801.zip")
 
-    add_versions("v1.45.0_p39", "7f2ece72a881dcff0d11171f72c43086ded5ab64af1a970d3507fb6414b57390")
+    add_versions("0.3", "318b88ed490ed956d0c01df8bafea1dc6b36bde41d578281b0063963bd6c5553")
 
     on_install(function (package)
         os.cp("msp/out/*", package:installdir())

@@ -5,7 +5,7 @@ local function axera_example(example_name, ...)
         set_targetdir("$(builddir)/bin/ax650")
         set_installdir("$(builddir)/install")
         set_optimize("fastest")  -- use -O3
-        add_packages("opencv-aarch64", "ax650n_bsp_sdk")
+        add_packages("ax650", "opencv-aarch64-gnu", "aarch64-gnu")
     target_end()
 end
 
