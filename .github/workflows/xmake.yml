@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        chip: ["ax650", "ax630c", "ax637", "ax620q", "ax620", "ax620a"]
+        chip: ["ax650", "ax630c", "ax620q", "ax620"]
 
     steps:
       - name: Checkout repo

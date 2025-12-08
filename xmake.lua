@@ -16,7 +16,7 @@ end
 
 option("chip")
     set_default("ax650")
-    set_values("ax650", "ax620e", "ax620", "ax630", "ax637")
+    set_values("ax650", "ax630c", "ax620q", "ax620", "ax637")
     set_showmenu(true)
     set_description("Set the target chip")
     after_check(function (option)
