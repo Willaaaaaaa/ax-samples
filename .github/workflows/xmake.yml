@@ -25,9 +25,8 @@ jobs:
           xmake-version: branch@master
           actions-cache-folder: '.xmake-cache'
           actions-cache-key: 'xmake-20251208'
-          # make it false due to unknown upstream error
-          # package-cache: true
-          # package-cache-key: 'xmake-20251208'  # we need to update this key when modifying pkg descriptions
+          package-cache: true
+          package-cache-key: 'xmake-20251208'  # we need to update this key when modifying pkg descriptions
           build-cache: true
           build-cache-key: 'xmake-${{ matrix.chip }}'
 
