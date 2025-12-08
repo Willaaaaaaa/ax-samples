@@ -1,28 +1,22 @@
 local chip_val = get_config("chip")
-if get_config("chip") == "ax650" then
-    includes("bsp_sdk/ax650.lua")
+if chip_val == "ax650" or chip_val == "ax630c" or chip_val == "ax637" then
+    if chip_val != "ax637" then
+        local bsp_sdk = chip_val == "ax650" and "ax650" or "ax620e"
+        includes("bsp_sdk/" .. bsp_sdk .. ".lua")
+    end
     includes("opencv/opencv-aarch64-gnu.lua")
     includes("toolchains/aarch64-gnu.lua")
-elseif is_config("chip", "ax630c") then
+elseif chip_val == "ax620q" then
     includes("bsp_sdk/ax620e.lua")
-    add_requires("ax620e")
-elseif is_config("chip", "ax620q") then
-    includes("bsp_sdk/ax620e.lua")
-    add_requires("ax620e")
-elseif is_config("chip", "ax620a") then
+    includes("opencv/opencv-arm-uclibc.lua")
+    includes("toolchains/arm-uclibc.lua")
+elseif chip_val == "ax620" then
     includes("bsp_sdk/ax620.lua")
-    add_requires("ax620")
-elseif is_config("chip", "ax620u") then
-    includes("bsp_sdk/ax620.lua")
-    add_requires("ax620")
+    includes("opencv/opencv-arm-gnueabihf.lua")
+    includes("toolchains/arm-gnueabihf.lua")
 
 -- TODO
-elseif is_config("chip", "ax630a") then
-    includes("bsp_sdk/ax650.lua")
-    add_requires("ax650")
-elseif is_config("chip", "ax637") then
-    includes("bsp_sdk/ax650.lua")
-    add_requires("ax650")
-
+elseif chip_val == "ax630a" then
+    -- FAE
 else
 end

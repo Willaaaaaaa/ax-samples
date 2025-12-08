@@ -27,11 +27,36 @@ add_options("chip")
 
 includes("xmake", "examples")
 
+local chip_val = get_config("chip")
+
 -- TODO: other chips
-toolchain("gcc-arm")
-    set_kind("standalone")
-    set_cross("aarch64-none-linux-gnu-")
-toolchain_end()
-add_requires("aarch64-gnu")
-set_toolchains("gcc-arm@aarch64-gnu")
-add_requires("ax650", "opencv-aarch64-gnu")
+if chip_val == "ax650" or chip_val == "ax630c" or chip_val == "ax637" then
+    toolchain("cross-aarch64")
+        set_kind("standalone")
+        set_cross("aarch64-none-linux-gnu-")
+    toolchain_end()
+    add_requires("aarch64-gnu", "opencv-aarch64-gnu")
+    set_toolchains("cross-aarch64@aarch64-gnu")
+    if chip_val != "ax637" then
+        local bsp_sdk = chip_val == "ax650" and "ax650" or "ax620e"
+        add_requires(bsp_sdk)
+    else
+        -- ax637->FAE
+    end
+elseif chip_val == "ax620q" then
+    toolchain("cross-arm-uclibc")
+        set_kind("standalone")
+        set_cross("arm-AX620E-linux-uclibcgnueabihf-")
+    toolchain_end()
+    add_requires("arm-uclibc", "opencv-arm-uclibc", "ax620e")
+    set_toolchains("cross-arm-uclibc@arm-uclibc")
+elseif chip_val == "ax620" then
+    toolchain("cross-arm-glibc")
+        set_kind("standalone")
+        set_cross("arm-linux-gnueabihf")
+    toolchain_end()
+    add_requires("arm-gnueabihf", "opencv-arm-gnueabihf", "ax620")
+    set_toolchains("cross-arm-glibc@arm-gnueabihf")
+else
+    -- ax630
+end
