@@ -32,6 +32,7 @@ Support Board
 
 ### Compile
 
+- [speedy cross compile](docs/xmake.md) Fast one-step cross compilation based on **Xmake**.
 - [easy compile](docs/compile.md) Simple cross-platform compilation based on **cmake**.
 
 ### Samples

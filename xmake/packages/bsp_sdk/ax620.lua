@@ -7,7 +7,7 @@ package("ax620")
 
     add_versions("0.3", "318b88ed490ed956d0c01df8bafea1dc6b36bde41d578281b0063963bd6c5553")
 
-    set_policy("package.install_always", true)
+    -- set_policy("package.install_always", true)
     on_install(function (package)
         os.cp("*", package:installdir())
         package:add("ldflags", "-Wl,--allow-shlib-undefined")

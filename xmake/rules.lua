@@ -1,28 +1,3 @@
--- rule("ax.mode.release")
---     on_config(function (target)
---         if is_mode("release") then
---             -- set the symbols visibility: hidden
---             if not target:get("symbols") and target:kind() ~= "shared" then
---                 target:set("symbols", "hidden")
---             end
-
---             -- enable optimization
---             if not target:get("optimize") then
---                 target:set("optimize", "fast")
---             end
-
---             -- strip all symbols
---             if not target:get("strip") then
---                 target:set("strip", "all")
---             end
-
---             -- add flags
---             set_warnings("all")   -- use -Wall
---             target:add("cxflags", "-DNDEBUG", "-fPIC", "-Wunused-function")
---         end
---     end)
--- rule_end()
-
 rule("build_summary")
     set_kind("project")
     after_build(function (opt)
