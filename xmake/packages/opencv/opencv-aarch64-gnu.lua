@@ -14,14 +14,7 @@ package("opencv-aarch64-gnu")
 
         package:add("linkdirs", "lib")
         package:add("linkdirs", "lib/opencv4/3rdparty")
-        for _, lib_file in ipairs(os.files(package:installdir("lib/*.a"))) do
-            local lib_name = path.basename(lib_file):match("lib(.+)")
-            package:add("links", lib_name)
-        end
-        for _, lib_file in ipairs(os.files(package:installdir("lib/opencv4/3rdparty/*.a"))) do
-            local lib_name = path.basename(lib_file):match("lib(.+)")
-            package:add("links", lib_name)
-        end
+        package:add("links", "opencv_highgui", "opencv_videoio", "opencv_imgcodecs", "opencv_imgproc", "opencv_core", "tegra_hal", "ittnotify", "libwebp", "libtiff", "libpng", "libopenjp2", "libjpeg-turbo", "zlib")
     end)
 
     on_test(function (package)

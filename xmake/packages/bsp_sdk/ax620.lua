@@ -7,12 +7,13 @@ package("ax620")
 
     add_versions("0.3", "318b88ed490ed956d0c01df8bafea1dc6b36bde41d578281b0063963bd6c5553")
 
+    set_policy("package.install_always", true)
     on_install(function (package)
-        os.cp("msp/out/*", package:installdir())
+        os.cp("*", package:installdir())
         package:add("ldflags", "-Wl,--allow-shlib-undefined")
         package:add("ldflags", "-Wl,-rpath," .. package:installdir("lib"))
     end)
 
     on_test(function (package)
-        assert(package:has_cfuncs("AX_ENGINE_Init", {includes = "ax_engine_api.h"}))
+        assert(package:has_cfuncs("AX_NPU_SDK_EX_GetVersion", {includes = "ax_interpreter_external_api.h"}))
     end)

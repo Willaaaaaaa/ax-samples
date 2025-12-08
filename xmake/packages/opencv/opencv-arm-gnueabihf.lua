@@ -13,14 +13,7 @@ package("opencv-arm-gnueabihf")
 
         package:add("linkdirs", "lib")
         package:add("linkdirs", "lib/opencv4/3rdparty")
-        for _, lib_file in ipairs(os.files(package:installdir("lib/*.a"))) do
-            local lib_name = path.basename(lib_file):match("lib(.+)")
-            package:add("links", lib_name)
-        end
-        for _, lib_file in ipairs(os.files(package:installdir("lib/opencv4/3rdparty/*.a"))) do
-            local lib_name = path.basename(lib_file):match("lib(.+)")
-            package:add("links", lib_name)
-        end
+        package:add("links", "opencv_highgui", "opencv_videoio", "opencv_imgcodecs", "opencv_imgproc", "opencv_core", "libopenjp2", "libpng", "ittnotify", "libtiff", "libjpeg-turbo", "libwebp", "zlib")
     end)
 
     on_test(function (package)

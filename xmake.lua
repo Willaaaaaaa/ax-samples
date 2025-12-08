@@ -39,7 +39,7 @@ if chip_val == "ax650" or chip_val == "ax630c" or chip_val == "ax637" then
     set_toolchains("cross-aarch64@aarch64-gnu")
     if chip_val ~= "ax637" then
         local bsp_sdk = chip_val == "ax650" and "ax650" or "ax620e"
-        add_requires(bsp_sdk, (chip_val == "ax650" and {} or {configs = {target = "ax620q"}}))
+        add_requires(bsp_sdk, (chip_val == "ax650" and {} or {configs = {target = "ax630c"}}))
     else
         -- ax637->FAE
     end

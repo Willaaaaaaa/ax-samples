@@ -36,4 +36,4 @@ jobs:
 
       - name: Build xmake project
         run: |
-          xmake build --vD --all
+          xmake build -vD --all

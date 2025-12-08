@@ -9,9 +9,7 @@ elseif chip_val == "ax630c" then
     includes("ax620e")
 elseif chip_val == "ax620q" then
     includes("ax620e")
-elseif chip_val == "ax620a" then
-    includes("ax620")
-elseif chip_val == "ax630a" then
+elseif chip_val == "ax620" then
     includes("ax620")
 elseif chip_val == "ax637" then
     includes("ax637")
