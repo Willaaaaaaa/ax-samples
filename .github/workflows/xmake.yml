@@ -31,7 +31,9 @@ jobs:
           build-cache: true
           build-cache-key: 'xmake-${{ matrix.chip }}'
 
-      - name: build
+      - name: Configure xmake project
+        run: xmake f -cvD --policies=build.ccache:y --chip=${{ matrix.chip }} --yes
+
+      - name: Build xmake project
         run: |
-          xmake f --policies=build.ccache:y --chip=${{ matrix.chip }} --yes
-          xmake build --verbose --diagnosis --all
+          xmake build --vD --all

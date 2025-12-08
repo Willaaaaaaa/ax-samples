@@ -9,7 +9,7 @@ package("aarch64-gnu")
 
     add_versions("9.2", "8dfe681531f0bd04fb9c53cf3c0a3368c616aa85d48938eebe2b516376e06a66")
 
-    set_policy("package.install_always", true)
+    -- set_policy("package.install_always", true)
     on_install("@linux|x86_64", function (package)
         os.cp("*", package:installdir())
     end)

@@ -8,7 +8,7 @@ package("ax650")
 
     add_versions("v1.45.0_p39", "7f2ece72a881dcff0d11171f72c43086ded5ab64af1a970d3507fb6414b57390")
 
-    set_policy("package.install_always", true)
+    -- set_policy("package.install_always", true)
     on_install(function (package)
         os.cp("msp/out/*", package:installdir())
         package:add("ldflags", "-Wl,--allow-shlib-undefined")

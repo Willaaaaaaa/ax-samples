@@ -1,0 +1,45 @@
+local function axera_example(example_name, ...)
+    target(example_name)
+        set_kind("binary")
+        add_files(...)
+        set_targetdir("$(builddir)/bin/ax620e")
+        set_installdir("$(builddir)/install")
+        set_optimize("fastest")  -- use -O3
+        local chip_val = get_config("chip")
+        local ocv = chip_val == "ax630c" and "opencv-aarch64-gnu" or "opencv-arm-uclibc"
+        local cc = chip_val == "ax630c" and "aarch64-gnu" or "arm-uclibc"
+        add_packages("ax620e", ocv, cc)
+    target_end()
+end
+
+axera_example("ax_classification", "ax_classification_steps.cc")
+
+axera_example("ax_yolov5s", "ax_yolov5s_steps.cc")
+axera_example("ax_yolov5s_seg", "ax_yolov5s_seg_steps.cc")
+axera_example("ax_yolov5_face", "ax_yolov5_face_steps.cc")
+axera_example("ax_yolov6", "ax_yolov6_steps.cc")
+axera_example("ax_yolov7_tiny_face", "ax_yolov7_tiny_face_steps.cc")
+axera_example("ax_yolov7", "ax_yolov7_steps.cc")
+axera_example("ax_yolov8", "ax_yolov8_steps.cc")
+axera_example("ax_yolov8_seg", "ax_yolov8_seg_steps.cc")
+axera_example("ax_yolov8_pose", "ax_yolov8_pose_steps.cc")
+axera_example("ax_yolov9", "ax_yolov9_steps.cc")
+axera_example("ax_yolov9_u", "ax_yolov9_ultralytics_steps.cc")
+axera_example("ax_yolov10", "ax_yolov10s_steps.cc")
+axera_example("ax_yolov10_u", "ax_yolov10_ultralytics_steps.cc")
+axera_example("ax_yolo11", "ax_yolo11_steps.cc")
+axera_example("ax_yolo11_seg", "ax_yolo11_seg_steps.cc")
+axera_example("ax_yolo11_pose", "ax_yolo11_pose_steps.cc")
+axera_example("ax_yolox", "ax_yolox_steps.cc")
+axera_example("ax_yolo_world", "ax_yolo_world_steps.cc")
+axera_example("ax_yolo_world_open_vocabulary", "ax_yolo_world_open_vocabulary_steps.cc")
+
+axera_example("ax_scrfd", "ax_scrfd_steps.cc")
+axera_example("ax_simcc_pose", "ax_simcc_pose_steps.cc")
+axera_example("ax_crowdcount", "ax_crowdcount_steps.cc")
+axera_example("ax_rtdetr", "ax_rtdetr_steps.cc")
+axera_example("ax_depth_anything", "ax_depth_anything_steps.cc")
+
+axera_example("ax_imgproc", "ax_imgproc_steps.cc")
+axera_example("ax_model_info", "ax_model_info.cc")
+axera_example("ax_yolo11n_classification", "ax_yolo11n_classification_steps.cc")

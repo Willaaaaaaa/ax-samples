@@ -39,7 +39,7 @@ if chip_val == "ax650" or chip_val == "ax630c" or chip_val == "ax637" then
     set_toolchains("cross-aarch64@aarch64-gnu")
     if chip_val ~= "ax637" then
         local bsp_sdk = chip_val == "ax650" and "ax650" or "ax620e"
-        add_requires(bsp_sdk)
+        add_requires(bsp_sdk, (chip_val == "ax650" and {} or {configs = {target = "ax620q"}}))
     else
         -- ax637->FAE
     end
@@ -48,12 +48,13 @@ elseif chip_val == "ax620q" then
         set_kind("standalone")
         set_cross("arm-AX620E-linux-uclibcgnueabihf-")
     toolchain_end()
-    add_requires("arm-uclibc", "opencv-arm-uclibc", "ax620e")
+    add_requires("arm-uclibc", "opencv-arm-uclibc")
+    add_requires("ax620e", {configs = {target = "ax620q"}})
     set_toolchains("cross-arm-uclibc@arm-uclibc")
 elseif chip_val == "ax620" then
     toolchain("cross-arm-glibc")
         set_kind("standalone")
-        set_cross("arm-linux-gnueabihf")
+        set_cross("arm-linux-gnueabihf-")
     toolchain_end()
     add_requires("arm-gnueabihf", "opencv-arm-gnueabihf", "ax620")
     set_toolchains("cross-arm-glibc@arm-gnueabihf")
