@@ -20,7 +20,12 @@ option("chip")
     set_showmenu(true)
     set_description("Set the target chip")
     after_check(function (option)
-        option:add("defines", "AXERA_TARGET_CHIP_" .. option:value():upper())
+        -- option:add("defines", "AXERA_TARGET_CHIP_" .. option:value():upper())
+        if option:value() == "ax620" then
+            option:add("defines", "AXERA_TARGET_CHIP_AX620")
+        elseif option:value() == "ax630c" or option:value() == "ax620q" then
+            option:add("defines", "AXERA_TARGET_CHIP_AX620E")
+        end
     end)
 option_end()
 add_options("chip")
