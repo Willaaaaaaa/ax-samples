@@ -37,7 +37,7 @@ if chip_val == "ax650" or chip_val == "ax630c" or chip_val == "ax637" then
     toolchain_end()
     add_requires("aarch64-gnu", "opencv-aarch64-gnu")
     set_toolchains("cross-aarch64@aarch64-gnu")
-    if chip_val != "ax637" then
+    if chip_val ~= "ax637" then
         local bsp_sdk = chip_val == "ax650" and "ax650" or "ax620e"
         add_requires(bsp_sdk)
     else
